@@ -48,9 +48,9 @@ class PopularProductController extends GetxController{
         }
         int checkQuantity(int plus){
           if(plus<0){
-            Get.snackbar("Uwaga ! ! !", "Nie możesz zaówić mniej",
+            Get.snackbar("Uwaga ! ! !", "Nie możesz zamówić mniej",
                           backgroundColor: AppColors.mainColor,
-                          colorText: Colors.white,
+                          colorText: Colors.red,
             );
             return 0;
           }else if(plus>20){
