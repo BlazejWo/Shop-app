@@ -9,14 +9,26 @@ class CartController extends GetxController{
   CartController({required this.cartRepo});
   Map<int, CartModel> _items={};
 
+  Map<int, CartModel> get items=>_items;
+
   void addItem(ProductModel product, int plus){
-    //print(' yyyyyyymmy '+_items.length.toString());
-    if(plus>0){
-      _items.putIfAbsent(product.id!, () {
-        print("dodoaj wartość do karty"+product.id!.toString()+"plus"+plus.toString());
-        _items.forEach((key, value) {
-          print("wartość jest "+value.plus.toString() );
-        });
+    if(_items.containsKey(product.id!)){
+      _items.update(product.id!, (value) {
+        //możliwość ponownego dodania//
+        return CartModel(
+              id: value.id,
+              name: value.name,
+              price: value.price,
+              img: value.img,
+              plus:value.plus!+plus,
+              isExist:true,
+              time: DateTime.now().toString(),
+
+        );
+      });
+
+    }else{
+      _items.putIfAbsent(product.id!,() {
         return CartModel(
           id: product.id,
           name: product.name,
@@ -30,6 +42,28 @@ class CartController extends GetxController{
       );
     }
 
+    if(plus>0){
+
+    }
+
+  }
+
+  bool existInCart(ProductModel product){
+    if(_items.containsKey(product.id)){
+    return true;
+    }
+    return false;
+  }
+    var plus=0;
+ int getPlus(ProductModel product){
+    if(_items.containsKey(product.id)){
+      _items.forEach((key, value) {
+        if(key==product.id){
+          plus=value.plus!;
+        }
+      });
+    }
+    return plus;
   }
 
 }

@@ -50,7 +50,7 @@ class PopularProductController extends GetxController{
           if(plus<0){
             Get.snackbar("Uwaga ! ! !", "Nie możesz zamówić mniej",
                           backgroundColor: AppColors.mainColor,
-                          colorText: Colors.red,
+                          colorText: Colors.white,
             );
             return 0;
           }else if(plus>20){
@@ -64,15 +64,27 @@ class PopularProductController extends GetxController{
           }
         }
 //ponizej funkcja zerująca dodawanie wpisana w popular food detail :26 z plus
-        void initProduct(CartController cart){
+        void initProduct(ProductModel product, CartController cart){
           _plus=0;
           _intCartItems=0;
           _cart=cart;
+          var exist=false;
+          exist = _cart.existInCart(product);
+          print("exist or not " +exist.toString());
+          if(exist){
+            _intCartItems=_cart.getPlus(product);
+          }
+          print("the wynik plus w karcie jest" + _intCartItems.toString());
         }
 
         void addItem(ProductModel product,) {
-          if(_plus>0){
+          if(_plus>0){ //po dodaniu jest zero ale tylko w pamieci
           _cart.addItem(product, _plus);
+          _plus=0; //przed dodaniem jest suma zero ale tylko w pamięci
+          _cart.items.forEach((key, value) {
+            print("The id is " +value.id.toString()+" The plus (wynik) is "+ value.plus.toString());
+          });
+
         }else{
             Get.snackbar
               ("Uwaga ! ! !", "powinienes dodać przedmioty do karty",
