@@ -47,13 +47,13 @@ class PopularProductController extends GetxController{
           update(); //funkcja odświeżania - w tym przypadku 'plus'
         }
         int checkQuantity(int plus){
-          if(plus<0){
+          if((_intCartItems+plus)<0){
             Get.snackbar("Uwaga ! ! !", "Nie możesz zamówić mniej",
                           backgroundColor: AppColors.mainColor,
                           colorText: Colors.white,
             );
             return 0;
-          }else if(plus>20){
+          }else if((_intCartItems+plus)>20){
             Get.snackbar("Uwaga ! ! !", "Nie możesz zaówić więcej",
               backgroundColor: AppColors.mainColor,
               colorText: Colors.white,
@@ -78,19 +78,25 @@ class PopularProductController extends GetxController{
         }
 
         void addItem(ProductModel product,) {
-          if(_plus>0){ //po dodaniu jest zero ale tylko w pamieci
+         // if(_plus>0){ //po dodaniu jest zero ale tylko w pamieci
           _cart.addItem(product, _plus);
           _plus=0; //przed dodaniem jest suma zero ale tylko w pamięci
+          _intCartItems=_cart.getPlus(product);
           _cart.items.forEach((key, value) {
             print("The id is " +value.id.toString()+" The plus (wynik) is "+ value.plus.toString());
           });
 
-        }else{
+      /*  }else{
             Get.snackbar
               ("Uwaga ! ! !", "powinienes dodać przedmioty do karty",
               backgroundColor: Colors.lightGreenAccent,
               colorText: Colors.black,
             );
-          }
+          }*/
+          update();
         }
+
+        int get totalItems{
+        return _cart.totalItems;
+  }
 }
