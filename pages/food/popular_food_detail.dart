@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterappm/controllers/cart_controller.dart';
 import 'package:flutterappm/controllers/popular_product_controller.dart';
+import 'package:flutterappm/pages/cart/cart_page.dart';
 import 'package:flutterappm/pages/home/food_page_body.dart';
 import 'package:flutterappm/pages/home/main_food_page.dart';
 import 'package:flutterappm/pages/widgets/app_column.dart';
@@ -73,12 +74,16 @@ class PopularFoodDetail extends StatelessWidget {
                        Get.find<PopularProductController>().totalItems>=1?
                         Positioned(
                             right: 0, top:0,
-                            child: AppIcon(icon: Icons.circle, size: 20, iconColor: Colors.transparent, backgroundColor: AppColors.mainColor,)):
+                            child: GestureDetector(
+                              onTap:(){
+                                Get.to(()=>CartPage());
+                    },
+                                child: AppIcon(icon: Icons.circle, size: 20, iconColor: Colors.transparent, backgroundColor: AppColors.mainColor,))):
                           Container(),
 
                        Get.find<PopularProductController>().totalItems>=1?
                        Positioned(
-                           right: 3, top:3,
+                           right: 4, top:3,
                            child: BigText(text: Get.find<PopularProductController>().totalItems.toString(),size: 12, color: Colors.white,
                            ),
                        ):
@@ -136,16 +141,16 @@ class PopularFoodDetail extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
         Container(
-    padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20, left: Dimensions.width20, right: Dimensions.width20),
-    decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(Dimensions.radious20),
-    color: Colors.white,
-    ),
-    child: Row(
-    children: [
-    GestureDetector(
-      onTap:(){
-        popularProduct.setQuantity(false);
+           padding: EdgeInsets.only(top: Dimensions.height20,bottom: Dimensions.height20, left: Dimensions.width20, right: Dimensions.width20),
+           decoration: BoxDecoration(
+             borderRadius: BorderRadius.circular(Dimensions.radious20),
+             color: Colors.white,
+           ),
+          child: Row(
+            children: [
+              GestureDetector(
+                  onTap:(){
+                    popularProduct.setQuantity(false);
         },
         child: Icon(Icons.remove, color: AppColors.singColor,)),
     SizedBox(width: Dimensions.width10/2,),
@@ -160,18 +165,20 @@ class PopularFoodDetail extends StatelessWidget {
     ),
 
     ),
-    Container(
-    padding: EdgeInsets.only(top: Dimensions.height20, bottom: Dimensions.height20,left: Dimensions.width20, right: Dimensions.width20),
-    child: GestureDetector(
-        onTap: (){
-          popularProduct.addItem(product);
-        },
-        child: BigText( text: '\$ ${product.price!} | Add to card', color: Colors.white,)),
-    decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(Dimensions.radious20),
-    color: AppColors.mainColor,
-    ),
+    GestureDetector(
+      onTap: (){
+        popularProduct.addItem(product);
+      },
+      child: Container(
+      padding: EdgeInsets.only(top: Dimensions.height20, bottom: Dimensions.height20,left: Dimensions.width20, right: Dimensions.width20),
 
+          child: BigText( text: '\$ ${product.price!} | Add to card', color: Colors.white,),
+      decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(Dimensions.radious20),
+      color: AppColors.mainColor,
+      ),
+
+      ),
     )
     ],
     ),

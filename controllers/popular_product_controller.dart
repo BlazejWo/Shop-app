@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterappm/controllers/cart_controller.dart';
+import 'package:flutterappm/models/cart_model.dart';
 import 'package:flutterappm/utils/colors.dart';
 import 'package:get/get.dart';
 import '../data/repository/popular_product_repo.dart';
@@ -37,14 +38,16 @@ class PopularProductController extends GetxController{
         //poniżej dodawanie i odejmowanie w boolien
         void setQuantity(bool isIncrement){
           if(isIncrement) {
-          // print('aaaaaaaaa'+_plus.toString());
+         // print('number of items'+_plus.toString());
+
 
             _plus = checkQuantity(_plus+1);
     }else{
-           // print('aaaaaaaaa'+_plus.toString());
+            //print('aaaaaaaaa'+_plus.toString());
             _plus = checkQuantity(_plus-1);
     }
           update(); //funkcja odświeżania - w tym przypadku 'plus'
+
         }
         int checkQuantity(int plus){
           if((_intCartItems+plus)<0){
@@ -52,6 +55,10 @@ class PopularProductController extends GetxController{
                           backgroundColor: AppColors.mainColor,
                           colorText: Colors.white,
             );
+            if(_intCartItems>0){
+              _plus = -_intCartItems;
+              return _plus;
+            }
             return 0;
           }else if((_intCartItems+plus)>20){
             Get.snackbar("Uwaga ! ! !", "Nie możesz zaówić więcej",
@@ -98,5 +105,8 @@ class PopularProductController extends GetxController{
 
         int get totalItems{
         return _cart.totalItems;
+  }
+  List<CartModel> get getItems{
+          return _cart.getItems;
   }
 }
