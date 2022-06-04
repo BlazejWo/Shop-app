@@ -11,8 +11,14 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../controllers/cart_controller.dart';
+import '../../controllers/popular_product_controller.dart';
+import '../../controllers/recommended_product_controller.dart';
 import '../../routes/route_helper.dart';
+import '../../utils/app_constants.dart';
+import '../../utils/colors.dart';
+import '../../utils/dimensions.dart';
 import '../../widgets/big_text.dart';
+import '../../widgets/exandable_text_widget.dart';
 import '../cart/cart_page.dart';
 import '../widgets/app_icon.dart';
 

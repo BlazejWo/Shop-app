@@ -9,7 +9,14 @@ import 'package:flutterappm/widgets/big_text.dart';
 import 'package:flutterappm/widgets/small_text.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/cart_controller.dart';
+import '../../utils/app_constants.dart';
+import '../../utils/colors.dart';
+import '../../utils/dimensions.dart';
+import '../../widgets/big_text.dart';
+import '../../widgets/small_text.dart';
 import '../home/main_food_page.dart';
+import '../widgets/app_icon.dart';
 
 
 class CartPage extends StatelessWidget {

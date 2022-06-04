@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutterappm/controllers/popular_product_controller.dart';
 import 'package:flutterappm/controllers/recommended_product_controller.dart';
-import 'package:flutterappm/home/colors.dart';
 import 'package:flutterappm/pages/food/popular_food_detail.dart';
 import 'package:flutterappm/pages/widgets/app_column.dart';
 import 'package:flutterappm/routes/route_helper.dart';
@@ -15,8 +14,17 @@ import 'package:flutterappm/widgets/icon_and_text_widget.dart';
 import 'package:flutterappm/widgets/small_text.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/popular_product_controller.dart';
+import '../../controllers/recommended_product_controller.dart';
 import '../../models/products_model.dart';
+import '../../routes/route_helper.dart';
+import '../../utils/app_constants.dart';
 import '../../utils/colors.dart';
+import '../../utils/dimensions.dart';
+import '../../widgets/big_text.dart';
+import '../../widgets/icon_and_text_widget.dart';
+import '../../widgets/small_text.dart';
+import '../widgets/app_column.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);

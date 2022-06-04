@@ -13,10 +13,19 @@ import 'package:flutterappm/widgets/exandable_text_widget.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../controllers/cart_controller.dart';
+import '../../controllers/popular_product_controller.dart';
+import '../../utils/app_constants.dart';
+import '../../utils/dimensions.dart';
 import '../../widgets/big_text.dart';
+import '../../widgets/exandable_text_widget.dart';
 import '../../widgets/icon_and_text_widget.dart';
 import '../../widgets/small_text.dart';
 import '../../utils/colors.dart';
+import '../cart/cart_page.dart';
+import '../home/main_food_page.dart';
+import '../widgets/app_column.dart';
+import '../widgets/app_icon.dart';
 
 class PopularFoodDetail extends StatelessWidget {
    final int pageId;

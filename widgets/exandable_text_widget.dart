@@ -4,6 +4,10 @@ import 'package:flutterappm/utils/colors.dart';
 import 'package:flutterappm/utils/dimensions.dart';
 import 'package:flutterappm/widgets/small_text.dart';
 
+import '../utils/colors.dart';
+import '../utils/dimensions.dart';
+import 'small_text.dart';
+
 class ExpandableTextWidget extends StatefulWidget {
   final String text;
   const ExpandableTextWidget({Key? key, required this.text}) : super(key: key);

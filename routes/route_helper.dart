@@ -2,7 +2,9 @@ import 'package:flutterappm/pages/food/popular_food_detail.dart';
 import 'package:flutterappm/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
 
+import '../pages/food/popular_food_detail.dart';
 import '../pages/food/recomended_food_details.dart';
+import '../pages/home/main_food_page.dart';
 
 class RouteHelper{
   static const String initial="/";
